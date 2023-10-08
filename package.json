@@ -1,0 +1,16 @@
+{
+  "name": "index_mongo_back",
+  "version": "1.0.0",
+  "description": "A mini backend project for Indexation File",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tuan Hung NGUYEN",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.0"
+  }
+}
