@@ -7,5 +7,6 @@ const db = {}
 db.mongoose = mongoose
 db.url = dbConfig.url
 db.indexations = require('./indexation.model.js')(mongoose)
+db.documents = require('./document.model.js')(mongoose)
 
 module.exports = db
