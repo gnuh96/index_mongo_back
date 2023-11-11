@@ -12,6 +12,7 @@ exports.create = (req, res) => {
     indexationsToAdd.map(async indexation => {
       const existingItem = await Indexation.findOne({
         mot: indexation.mot,
+        lemma: indexation.lemma,
         occurrence: indexation.occurrence,
         document: indexation.document,
       })
@@ -19,6 +20,7 @@ exports.create = (req, res) => {
       if (!existingItem) {
         const newIndexation = new Indexation({
           mot: indexation.mot,
+          lemma: indexation.lemma,
           occurrence: indexation.occurrence,
           document: indexation.document,
         })
