@@ -27,6 +27,17 @@ exports.create = async (req, res) => {
     })
   }
 }
+exports.findAll = (req, res) => {
+  Document.find()
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || 'Some error occurred while find a word.',
+      })
+    })
+}
 
 // Delete a Document with the specified id in the request
 exports.delete = (req, res) => {
