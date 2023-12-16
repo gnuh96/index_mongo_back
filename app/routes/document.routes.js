@@ -4,6 +4,7 @@ module.exports = app => {
   var router = require('express').Router()
 
   router.get('/', documents.findAll)
+  router.get('/:name', documents.findByName)
   router.post('/', documents.create)
 
   router.delete('/', documents.deleteAll)

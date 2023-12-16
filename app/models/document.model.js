@@ -3,6 +3,7 @@ module.exports = mongoose => {
     {
       name: String,
       content: String,
+      urlBase64: String,
     },
     {timestamps: true},
   )

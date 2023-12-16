@@ -50,7 +50,8 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
   const mot = req.query.mot
-  var condition = mot ? {mot: {$regex: new RegExp(mot), $options: 'i'}} : {}
+  const doc = req.query.doc
+  var condition = mot ? {mot: mot} : doc ? {document: doc} : {}
 
   Indexation.find(condition)
     .then(data => {

@@ -8,14 +8,15 @@ exports.create = async (req, res) => {
     const existingItem = await Document.findOne({
       name: documentToAdd.name,
       content: documentToAdd.content,
+      urlBase64: documentToAdd.urlBase64,
     })
-
     if (existingItem) {
       res.status(409).send({message: 'Document already exists'})
     } else {
       const newDocument = new Document({
         name: documentToAdd.name,
         content: documentToAdd.content,
+        urlBase64: documentToAdd.urlBase64,
       })
 
       const savedDocument = await newDocument.save()
@@ -37,6 +38,26 @@ exports.findAll = (req, res) => {
         message: err.message || 'Some error occurred while find a word.',
       })
     })
+}
+
+exports.findByName = async (req, res) => {
+  const documentName = req.params.name
+
+  try {
+    const document = await Document.findOne({name: documentName})
+
+    if (!document) {
+      res.status(404).send({
+        message: `Document with name ${documentName} not found`,
+      })
+    } else {
+      res.send(document)
+    }
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || 'Error while retrieving document by name',
+    })
+  }
 }
 
 // Delete a Document with the specified id in the request
